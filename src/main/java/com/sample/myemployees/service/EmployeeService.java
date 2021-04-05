@@ -1,6 +1,5 @@
 package com.sample.myemployees.service;
 
-import com.sample.myemployees.controller.EmployeeController;
 import com.sample.myemployees.controller.dto.EmployeeDto;
 import com.sample.myemployees.entities.Address;
 import com.sample.myemployees.entities.Employee;
@@ -18,23 +17,25 @@ public class EmployeeService {
   private EmployeeRepository employeeRepository;
 
   @Autowired
-  EmployeeService(EmployeeRepository employeeRepository){this.employeeRepository = employeeRepository;}
+  EmployeeService(EmployeeRepository employeeRepository) {
+    this.employeeRepository = employeeRepository;
+  }
 
-  private void create(EmployeeDto employeeDto) throws Exception {
+  public void create(EmployeeDto employeeDto) throws Exception {
     Employee employee = new Employee();
     employee.setAge(employeeDto.getAge());
     employee.setEmployeeId(employeeDto.getEmployeeId());
     employee.setEmployeeName(employeeDto.getEmployeeName());
     employee.setRole(employeeDto.getRole());
     Address address = new Address();
-    address.setAddressLine1(employeeDto.getAddressDto().getAddressLine1());
-    address.setAddressLine2(employeeDto.getAddressDto().getAddressLine2());
-    address.setCountry(employeeDto.getAddressDto().getCountry());
-    address.setZipCode(employeeDto.getAddressDto().getZipCode());
+    address.setAddressLine1(employeeDto.getAddress().getAddressLine1());
+    address.setAddressLine2(employeeDto.getAddress().getAddressLine2());
+    address.setCountry(employeeDto.getAddress().getCountry());
+    address.setZipCode(employeeDto.getAddress().getZipCode());
     employee.setAddress(address);
     try {
       employeeRepository.save(employee);
-    }catch (Exception ex){
+    } catch (Exception ex) {
       logger.error("exception while inserting new employee");
       throw new Exception("exception while inserting new employee");
     }

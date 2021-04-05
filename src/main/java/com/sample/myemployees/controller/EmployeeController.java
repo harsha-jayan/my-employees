@@ -26,7 +26,7 @@ public class EmployeeController {
   public String createEmployee(@RequestBody EmployeeDto employee){
 
     try {
-
+      employeeService.create(employee);
       return "successfully inserted record";
 
     } catch (Exception ex) {

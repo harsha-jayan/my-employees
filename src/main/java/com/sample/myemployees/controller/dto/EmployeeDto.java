@@ -8,7 +8,7 @@ public class EmployeeDto {
   private String employeeName;
   private String role;
   private int age;
-  private AddressDto addressDto;
+  private AddressDto address;
 
   public Long getEmployeeId() {
     return employeeId;
@@ -42,11 +42,11 @@ public class EmployeeDto {
     this.age = age;
   }
 
-  public AddressDto getAddressDto() {
-    return addressDto;
+  public AddressDto getAddress() {
+    return address;
   }
 
-  public void setAddressDto(AddressDto addressDto) {
-    this.addressDto = addressDto;
+  public void setAddress(AddressDto address) {
+    this.address = address;
   }
 }
